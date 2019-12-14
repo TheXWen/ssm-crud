@@ -17,7 +17,7 @@ public class EmployeeService {
 	EmployeeMapper employeeMapper;
 
 	/**
-	 * ²éÑ¯ËùÓĞÔ±¹¤
+	 * æŸ¥è¯¢æ‰€æœ‰å‘˜å·¥
 	 * @return
 	 */
 	public List<Employee> getAll() {
@@ -26,7 +26,7 @@ public class EmployeeService {
 	}
 
 	/**
-	 * Ô±¹¤±£´æ
+	 * å‘˜å·¥ä¿å­˜
 	 * @param employee
 	 */
 	public void saveEmp(Employee employee) {
@@ -35,9 +35,9 @@ public class EmployeeService {
 	}
 
 	/**
-	 * Ğ£ÑéÓÃ»§ÃûÊÇ·ñ¿ÉÓÃ
+	 * æ ¡éªŒç”¨æˆ·åæ˜¯å¦å¯ç”¨
 	 * @param empName
-	 * @return	true:´ú±íµ±Ç°ĞÕÃû¿ÉÓÃ	fasle:²»¿ÉÓÃ
+	 * @return	true:ä»£è¡¨å½“å‰å§“åå¯ç”¨	fasle:ä¸å¯ç”¨
 	 */
 	public boolean checkUser(String empName) {
 		// TODO Auto-generated method stub
@@ -49,7 +49,7 @@ public class EmployeeService {
 	}
 
 	/**
-	 * °´ÕÕÔ±¹¤id²éÑ¯Ô±¹¤
+	 * æŒ‰ç…§å‘˜å·¥idæŸ¥è¯¢å‘˜å·¥
 	 * @param id
 	 * @return
 	 */
@@ -60,7 +60,7 @@ public class EmployeeService {
 	}
 
 	/**
-	 * Ô±¹¤¸üĞÂ
+	 * å‘˜å·¥æ›´æ–°
 	 * @param employee
 	 */
 	public void updateEmp(Employee employee) {
@@ -69,7 +69,7 @@ public class EmployeeService {
 	}
 
 	/**
-	 * Ô±¹¤É¾³ı
+	 * å‘˜å·¥åˆ é™¤
 	 * @param id
 	 */
 	public void deleteEmp(Integer id) {

@@ -4,7 +4,7 @@
 .mtj.tmp/
 .vscode/
 .settings/
-
+.classpath
 # Package Files #
 *.war
 *.ear

@@ -27,7 +27,7 @@ import com.xw.crud.bean.Msg;
 import com.xw.crud.service.EmployeeService;
 
 /**
- * ´¦ÀíÔ±¹¤CRUDÇëÇó
+ * å¤„ç†å‘˜å·¥CRUDè¯·æ±‚
  * @author xw
  *
  */
@@ -38,9 +38,9 @@ public class EmployeeController {
 	EmployeeService employeeService;
 	
 	/**
-	 * µ¥¸öÅúÁ¿¶şºÏÒ»
-	 * ÅúÁ¿É¾³ı:1-2-3
-	 * µ¥¸öÉ¾³ı:1
+	 * å•ä¸ªæ‰¹é‡äºŒåˆä¸€
+	 * æ‰¹é‡åˆ é™¤:1-2-3
+	 * å•ä¸ªåˆ é™¤:1
 	 * 
 	 * @param id
 	 * @return
@@ -48,11 +48,11 @@ public class EmployeeController {
 	@ResponseBody
 	@RequestMapping(value="/emp/{ids}", method=RequestMethod.DELETE)
 	public Msg deleteEmp(@PathVariable("ids")String ids) {
-		//ÅúÁ¿É¾³ı
+		//æ‰¹é‡åˆ é™¤
 		if(ids.contains("-")){
 			List<Integer> del_ids = new ArrayList<Integer>();
 			String[] str_ids = ids.split("-");
-			//×é×°id
+			//ç»„è£…id
 			for (String string : str_ids) {
 				del_ids.add(Integer.parseInt(string));
 			}
@@ -65,45 +65,45 @@ public class EmployeeController {
 	}
 	
 	/**
-	 * Èç¹ûÖ±½Ó·¢ËÍajax=PUTĞÎÊ½µÄÇëÇó
-	 * ·â×°µÄÊı¾İ
+	 * å¦‚æœç›´æ¥å‘é€ajax=PUTå½¢å¼çš„è¯·æ±‚
+	 * å°è£…çš„æ•°æ®
 	 * Employee [empId=1013, gender=null, email=null, empName=null, dId=null, department=null]
 	 * 
-	 * ÎÊÌâ:
-	 * ÇëÇóÌåÖĞÓĞÊı¾İ
-	 * µ«ÊÇEmplloyee¶ÔÏó·â×°²»ÉÏ
+	 * é—®é¢˜:
+	 * è¯·æ±‚ä½“ä¸­æœ‰æ•°æ®
+	 * ä½†æ˜¯Emplloyeeå¯¹è±¡å°è£…ä¸ä¸Š
 	 * update tbl_emp	where emp_id = 1014
 	 * 
-	 * Ô­Òò:
+	 * åŸå› :
 	 * Tomcat:
-	 * 		1¡¢½«ÇëÇóÌåÖĞµÄÊı¾İ,·â×°Ò»¸ömap
-	 * 		2¡¢request.getParameter("empName")¾Í»á´ÓÕâ¸ömapÖĞÈ¡Öµ
-	 * 		3¡¢SpeingMVC·â×°POJO¶ÔÏóµÄÊ±ºò¡£
-	 * 				»á°ÑPOJOÖĞÃ¿¸öÊôĞÔµÄÖµ:request.getParameter("email")
-	 * AJAX·¢ËÍPUTÇëÇóÒı·¢µÄÑª°¸:
-	 * 		PUTÇëÇó,ÇëÇóÌåÖĞµÄÊı¾İ,request.getParameter("email")ÄÃ²»µ½
-	 * 		TomcatÒ»¿´ÊÇPUT²»»á·â×°ÇëÇóÌåÖĞµÄÊı¾İÎªmap,Ö»ÓĞPOSTĞÎÊ½µÄÇëÇó²Å·â×°ÇëÇóÌåÎªmap
+	 * 		1ã€å°†è¯·æ±‚ä½“ä¸­çš„æ•°æ®,å°è£…ä¸€ä¸ªmap
+	 * 		2ã€request.getParameter("empName")å°±ä¼šä»è¿™ä¸ªmapä¸­å–å€¼
+	 * 		3ã€SpeingMVCå°è£…POJOå¯¹è±¡çš„æ—¶å€™ã€‚
+	 * 				ä¼šæŠŠPOJOä¸­æ¯ä¸ªå±æ€§çš„å€¼:request.getParameter("email")
+	 * AJAXå‘é€PUTè¯·æ±‚å¼•å‘çš„è¡€æ¡ˆ:
+	 * 		PUTè¯·æ±‚,è¯·æ±‚ä½“ä¸­çš„æ•°æ®,request.getParameter("email")æ‹¿ä¸åˆ°
+	 * 		Tomcatä¸€çœ‹æ˜¯PUTä¸ä¼šå°è£…è¯·æ±‚ä½“ä¸­çš„æ•°æ®ä¸ºmap,åªæœ‰POSTå½¢å¼çš„è¯·æ±‚æ‰å°è£…è¯·æ±‚ä½“ä¸ºmap
 	 * 
-	 * ½â¾ö·½°¸:
-	 * ÎÒÃÇÒªÄÜÖ§³ÖÖ±½Ó·¢ËÍPUTÖ®ÀàµÄÇëÇó»¹ÓĞ·â×°ÇëÇóÌåÖĞµÄÊı¾İ
-	 * 1¡¢ÅäÖÃÉÏHttpPutFormContentFilter
-	 * 2¡¢ËûµÄ×÷ÓÃ:½«ÇëÇóÌåÖĞµÄÊı¾İ½âÎö°ü×°³ÉÒ»¸ömap
-	 * 3¡¢request±»ÖØĞÂ°ü×°,request.getParameter()±»ÖØĞ´,¾Í»á´Ó×Ô¼º·â×°µÄmapÖĞÈ¡Êı¾İ
-	 * Ô±¹¤¸üĞÂ·½·¨
+	 * è§£å†³æ–¹æ¡ˆ:
+	 * æˆ‘ä»¬è¦èƒ½æ”¯æŒç›´æ¥å‘é€PUTä¹‹ç±»çš„è¯·æ±‚è¿˜æœ‰å°è£…è¯·æ±‚ä½“ä¸­çš„æ•°æ®
+	 * 1ã€é…ç½®ä¸ŠHttpPutFormContentFilter
+	 * 2ã€ä»–çš„ä½œç”¨:å°†è¯·æ±‚ä½“ä¸­çš„æ•°æ®è§£æåŒ…è£…æˆä¸€ä¸ªmap
+	 * 3ã€requestè¢«é‡æ–°åŒ…è£…,request.getParameter()è¢«é‡å†™,å°±ä¼šä»è‡ªå·±å°è£…çš„mapä¸­å–æ•°æ®
+	 * å‘˜å·¥æ›´æ–°æ–¹æ³•
 	 * @param employee
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping(value="/emp/{empId}", method=RequestMethod.PUT)
 	public Msg saveEmp(Employee employee, HttpServletRequest request) {
-		System.out.println("ÇëÇóÌåÖĞµÄÖµ:" + request.getParameter("gender"));
-		System.out.println("½«Òª¸üĞÂµÄÔ±¹¤Êı¾İ£º" + employee);
+		System.out.println("è¯·æ±‚ä½“ä¸­çš„å€¼:" + request.getParameter("gender"));
+		System.out.println("å°†è¦æ›´æ–°çš„å‘˜å·¥æ•°æ®ï¼š" + employee);
 		Employee employee2 = employeeService.getEmp(employee.getEmpId());
-		//ÏÈÅĞ¶ÏÓÃ»§ÃûÊÇ·ñÊÇºÏ·¨µÄ±í´ïÊ½
+		//å…ˆåˆ¤æ–­ç”¨æˆ·åæ˜¯å¦æ˜¯åˆæ³•çš„è¡¨è¾¾å¼
 		String empName = employee2.getEmpName();
 				String regx = "(^[a-zA-Z0-9_-]{6,16}$)|(^[\u2E80-\u9FFF]{2,5})";
 				if(!empName.matches(regx)){
-					return Msg.fail().add("va_msg", "ÓÃ»§±ØĞëÊÇ6-16Î»Êı×ÖºÍ×ÖÄ¸µÄ×éºÏ»òÕß2-5Î»ÖĞÎÄ");
+					return Msg.fail().add("va_msg", "ç”¨æˆ·å¿…é¡»æ˜¯6-16ä½æ•°å­—å’Œå­—æ¯çš„ç»„åˆæˆ–è€…2-5ä½ä¸­æ–‡");
 				}
 					employeeService.updateEmp(employee);
 					return Msg.success();
@@ -111,7 +111,7 @@ public class EmployeeController {
 	}
 	
 	/**
-	 * ¸ù¾İid²éÑ¯Ô±¹¤
+	 * æ ¹æ®idæŸ¥è¯¢å‘˜å·¥
 	 * @param id
 	 * @return
 	 */
@@ -123,42 +123,42 @@ public class EmployeeController {
 	}
 	
 	/**
-	 * ¼ì²éÓÃ»§ÃûÊÇ·ñ¿ÉÓÃ
+	 * æ£€æŸ¥ç”¨æˆ·åæ˜¯å¦å¯ç”¨
 	 * @param empName
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("/checkuser")
 	public Msg checkuser(@RequestParam("empName")String empName) {
-		//ÏÈÅĞ¶ÏÓÃ»§ÃûÊÇ·ñÊÇºÏ·¨µÄ±í´ïÊ½
+		//å…ˆåˆ¤æ–­ç”¨æˆ·åæ˜¯å¦æ˜¯åˆæ³•çš„è¡¨è¾¾å¼
 		String regx = "(^[a-zA-Z0-9_-]{6,16}$)|(^[\u2E80-\u9FFF]{2,5})";
 		boolean b = employeeService.checkUser(empName);
 		if(!empName.matches(regx)){
-			return Msg.fail().add("va_msg", "ÓÃ»§±ØĞëÊÇ6-16Î»Êı×ÖºÍ×ÖÄ¸µÄ×éºÏ»òÕß2-5Î»ÖĞÎÄ");
+			return Msg.fail().add("va_msg", "ç”¨æˆ·å¿…é¡»æ˜¯6-16ä½æ•°å­—å’Œå­—æ¯çš„ç»„åˆæˆ–è€…2-5ä½ä¸­æ–‡");
 		}
 		
-		//Êı¾İ¿âÓÃ»§ÃûÖØ¸´Ğ£Ñé
+		//æ•°æ®åº“ç”¨æˆ·åé‡å¤æ ¡éªŒ
 		if(b){
 			return Msg.success();
 		}else {
-			return Msg.fail().add("va_msg", "ÓÃ»§Ãû²»¿ÉÓÃ");
+			return Msg.fail().add("va_msg", "ç”¨æˆ·åä¸å¯ç”¨");
 		}
 	}
 	
 	/**
-	 * Ô±¹¤±£´æ
+	 * å‘˜å·¥ä¿å­˜
 	 * @return
 	 */
 	@RequestMapping(value="/emp", method=RequestMethod.POST)
 	@ResponseBody
 	public Msg saveEmp(@Valid Employee employee, BindingResult result){
 		if(result.hasErrors()){
-			//Ğ£ÑéÊ§°Ü,Ó¦¸Ã·µ»ØÊ§°Ü,ÔÚÄ£Ì¬¿òÖĞÏÔÊ¾Ğ£ÑéÊ§°ÜµÄÏÔÊ¾ĞÅÏ¢
+			//æ ¡éªŒå¤±è´¥,åº”è¯¥è¿”å›å¤±è´¥,åœ¨æ¨¡æ€æ¡†ä¸­æ˜¾ç¤ºæ ¡éªŒå¤±è´¥çš„æ˜¾ç¤ºä¿¡æ¯
 			Map<String, Object> map = new HashMap<String, Object>();
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError fieldError : errors) {
-				System.out.println("´íÎóµÄ×Ö¶ÎÃû" + fieldError.getField());
-				System.out.println("´íÎóĞÅÏ¢" + fieldError.getDefaultMessage());
+				System.out.println("é”™è¯¯çš„å­—æ®µå" + fieldError.getField());
+				System.out.println("é”™è¯¯ä¿¡æ¯" + fieldError.getDefaultMessage());
 				map.put(fieldError.getField(), fieldError.getDefaultMessage());
 			}
 			return Msg.fail().add("errorFields", map);
@@ -169,39 +169,39 @@ public class EmployeeController {
 	}
 	
 	/**
-	 * µ¼Èëjackson°ü
+	 * å¯¼å…¥jacksonåŒ…
 	 * @param pn
 	 * @return
 	 */
 	@RequestMapping("/emps")
 	@ResponseBody
 	public Msg getEmpsWithJson(@RequestParam(value="pn", defaultValue="1")Integer pn) {
-		//Õâ²»ÊÇÒ»¸ö·ÖÒ³²éÑ¯
-		//ÒıÈëPageHelper·ÖÒ³²å¼ş
-		//ÔÚ²éÑ¯Ö®Ç°Ö»ĞèÒªµ÷ÓÃ,´«ÈëÒ³Âë,ÒÔ¼°Ã¿Ò³µÄ´óĞ¡
+		//è¿™ä¸æ˜¯ä¸€ä¸ªåˆ†é¡µæŸ¥è¯¢
+		//å¼•å…¥PageHelperåˆ†é¡µæ’ä»¶
+		//åœ¨æŸ¥è¯¢ä¹‹å‰åªéœ€è¦è°ƒç”¨,ä¼ å…¥é¡µç ,ä»¥åŠæ¯é¡µçš„å¤§å°
 		PageHelper.startPage(pn, 5);
-		//startPageºóÃæ½ô¸úµÄÕâ¸ö²éÑ¯¾ÍÊÇÒ»¸ö·ÖÒ³²éÑ¯
+		//startPageåé¢ç´§è·Ÿçš„è¿™ä¸ªæŸ¥è¯¢å°±æ˜¯ä¸€ä¸ªåˆ†é¡µæŸ¥è¯¢
 		List<Employee> emps = employeeService.getAll();
-		//Ê¹ÓÃPageInfo°ü×°²éÑ¯ºóµÄ½á¹û,Ö»ĞèÒª½«PageInfo½»¸øÒ³Ãæ¾ÍĞĞÁË
-		//·â×°ÁËÏêÏ¸µÄ·ÖÒ³ĞÅÏ¢,°üÀ¨ÓĞÎÒÃÇ²éÑ¯³öÀ´µÄÊı¾İ,´«ÈëÁ¬ĞøÏÔÊ¾µÄÒ³Êı
+		//ä½¿ç”¨PageInfoåŒ…è£…æŸ¥è¯¢åçš„ç»“æœ,åªéœ€è¦å°†PageInfoäº¤ç»™é¡µé¢å°±è¡Œäº†
+		//å°è£…äº†è¯¦ç»†çš„åˆ†é¡µä¿¡æ¯,åŒ…æ‹¬æœ‰æˆ‘ä»¬æŸ¥è¯¢å‡ºæ¥çš„æ•°æ®,ä¼ å…¥è¿ç»­æ˜¾ç¤ºçš„é¡µæ•°
 		PageInfo page = new PageInfo(emps, 5);
 		return Msg.success().add("pageInfo", page);
 	}
 	
 	/**
-	 * ²éÑ¯Ô±¹¤Êı¾İ(·ÖÒ³²éÑ¯)
+	 * æŸ¥è¯¢å‘˜å·¥æ•°æ®(åˆ†é¡µæŸ¥è¯¢)
 	 * @return
 	 */
 //	@RequestMapping("/emps")
 	public String getEmps(@RequestParam(value="pn", defaultValue="1")Integer pn, Model model) {
-		//Õâ²»ÊÇÒ»¸ö·ÖÒ³²éÑ¯
-		//ÒıÈëPageHelper·ÖÒ³²å¼ş
-		//ÔÚ²éÑ¯Ö®Ç°Ö»ĞèÒªµ÷ÓÃ,´«ÈëÒ³Âë,ÒÔ¼°Ã¿Ò³µÄ´óĞ¡
+		//è¿™ä¸æ˜¯ä¸€ä¸ªåˆ†é¡µæŸ¥è¯¢
+		//å¼•å…¥PageHelperåˆ†é¡µæ’ä»¶
+		//åœ¨æŸ¥è¯¢ä¹‹å‰åªéœ€è¦è°ƒç”¨,ä¼ å…¥é¡µç ,ä»¥åŠæ¯é¡µçš„å¤§å°
 		PageHelper.startPage(pn, 5);
-		//startPageºóÃæ½ô¸úµÄÕâ¸ö²éÑ¯¾ÍÊÇÒ»¸ö·ÖÒ³²éÑ¯
+		//startPageåé¢ç´§è·Ÿçš„è¿™ä¸ªæŸ¥è¯¢å°±æ˜¯ä¸€ä¸ªåˆ†é¡µæŸ¥è¯¢
 		List<Employee> emps = employeeService.getAll();
-		//Ê¹ÓÃPageInfo°ü×°²éÑ¯ºóµÄ½á¹û,Ö»ĞèÒª½«PageInfo½»¸øÒ³Ãæ¾ÍĞĞÁË
-		//·â×°ÁËÏêÏ¸µÄ·ÖÒ³ĞÅÏ¢,°üÀ¨ÓĞÎÒÃÇ²éÑ¯³öÀ´µÄÊı¾İ,´«ÈëÁ¬ĞøÏÔÊ¾µÄÒ³Êı
+		//ä½¿ç”¨PageInfoåŒ…è£…æŸ¥è¯¢åçš„ç»“æœ,åªéœ€è¦å°†PageInfoäº¤ç»™é¡µé¢å°±è¡Œäº†
+		//å°è£…äº†è¯¦ç»†çš„åˆ†é¡µä¿¡æ¯,åŒ…æ‹¬æœ‰æˆ‘ä»¬æŸ¥è¯¢å‡ºæ¥çš„æ•°æ®,ä¼ å…¥è¿ç»­æ˜¾ç¤ºçš„é¡µæ•°
 		PageInfo page = new PageInfo(emps, 5);
 		model.addAttribute("pageInfo", page);
 		

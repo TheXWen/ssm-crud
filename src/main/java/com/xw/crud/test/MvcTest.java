@@ -20,7 +20,7 @@ import com.github.pagehelper.PageInfo;
 import com.xw.crud.bean.Employee;
 
 /**
- * Ê¹ÓÃSpring²âÊÔÄ£¿éÌá¹©µÄ²âÊÔÇëÇó¹¦ÄÜ,²âÊÔcurdÇëÇóµÄÕıÈ·ĞÔ
+ * ä½¿ç”¨Springæµ‹è¯•æ¨¡å—æä¾›çš„æµ‹è¯•è¯·æ±‚åŠŸèƒ½,æµ‹è¯•curdè¯·æ±‚çš„æ­£ç¡®æ€§
  * @author xw
  *
  */
@@ -28,10 +28,10 @@ import com.xw.crud.bean.Employee;
 @WebAppConfiguration
 @ContextConfiguration(locations={"classpath:applicationContext.xml", "file:src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml"})
 public class MvcTest {
-	//´«ÈëSpringmvcµÄioc
+	//ä¼ å…¥Springmvcçš„ioc
 	@Autowired
 	WebApplicationContext context;
-	//ĞéÄâmvcÇëÇó,»ñÈ¡µ½´¦Àí½á¹û
+	//è™šæ‹Ÿmvcè¯·æ±‚,è·å–åˆ°å¤„ç†ç»“æœ
 	MockMvc mockMvc;
 	
 	@Before
@@ -41,20 +41,20 @@ public class MvcTest {
 	
 	@Test
 	public void testPage() throws Exception {
-		//Ä£ÄâÇëÇóÄÃµ½·µ»ØÖµ
+		//æ¨¡æ‹Ÿè¯·æ±‚æ‹¿åˆ°è¿”å›å€¼
 		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/emps").param("pn", "5")).andReturn();
-		//ÇëÇó³É¹¦ÒÔºó£¬ÇëÇóÓòÖĞ»áÓĞpageInfo,ÎÒÃÇ¿ÉÒÔÈ¡³öpageInfo½øĞĞÑéÖ¤
+		//è¯·æ±‚æˆåŠŸä»¥åï¼Œè¯·æ±‚åŸŸä¸­ä¼šæœ‰pageInfo,æˆ‘ä»¬å¯ä»¥å–å‡ºpageInfoè¿›è¡ŒéªŒè¯
 		MockHttpServletRequest request = result.getRequest();
 		PageInfo pi = (PageInfo) request.getAttribute("pageInfo");
-		System.out.println("µ±Ç°Ò³Âë£º" + pi.getPageNum());
-		System.out.println("×ÜÒ³Âë£º" + pi.getPages());
-		System.out.println("×Ü¼ÇÂ¼Êı£º" + pi.getTotal());
-		System.out.println("ÔÚÒ³ÃæĞèÒªÁ¬ĞøÏÔÊ¾µÄÒ³Âë");
+		System.out.println("å½“å‰é¡µç ï¼š" + pi.getPageNum());
+		System.out.println("æ€»é¡µç ï¼š" + pi.getPages());
+		System.out.println("æ€»è®°å½•æ•°ï¼š" + pi.getTotal());
+		System.out.println("åœ¨é¡µé¢éœ€è¦è¿ç»­æ˜¾ç¤ºçš„é¡µç ");
 		int[] nunms = pi.getNavigatepageNums();
 		for (int i : nunms) {
 			System.out.print(" " + i);
 		}
-		//»ñÈ¡Ô±¹¤Êı¾İ
+		//è·å–å‘˜å·¥æ•°æ®
 		List<Employee> list = pi.getList();
 		for (Employee employee : list) {
 			System.out.println("ID:" + employee.getEmpId() + "==>Name:" + employee.getEmpName());

@@ -15,12 +15,12 @@ import com.xw.crud.dao.DepartmentMapper;
 import com.xw.crud.dao.EmployeeMapper;
 
 /**
- * ²âÊÔdao²ãµÄ¹¤×÷
+ * æµ‹è¯•daoå±‚çš„å·¥ä½œ
  * @author xw
- * ÍÆ¼öSpringµÄÏîÄ¿¾Í¿ÉÒÔÊ¹ÓÃSpringµÄµ¥Ôª²âÊÔ£¬¿ÉÒÔ×Ô¶¯×¢ÈëÎÒÃÇĞèÒªµÄ×é¼ş
- * 1¡¢µ¼ÈëSpringTestÄ£¿é
- * 2¡¢@ContextConfigurationÖ¸¶¨SpringÅäÖÃÎÄ¼şµÄÎ»ÖÃ
- * 3¡¢Ö±½ÓautowiredÒªÊ¹ÓÃµÄ×é¼ş¼´¿É
+ * æ¨èSpringçš„é¡¹ç›®å°±å¯ä»¥ä½¿ç”¨Springçš„å•å…ƒæµ‹è¯•ï¼Œå¯ä»¥è‡ªåŠ¨æ³¨å…¥æˆ‘ä»¬éœ€è¦çš„ç»„ä»¶
+ * 1ã€å¯¼å…¥SpringTestæ¨¡å—
+ * 2ã€@ContextConfigurationæŒ‡å®šSpringé…ç½®æ–‡ä»¶çš„ä½ç½®
+ * 3ã€ç›´æ¥autowiredè¦ä½¿ç”¨çš„ç»„ä»¶å³å¯
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,20 +37,20 @@ public class MapperTest {
 	SqlSession sqlSession;
 	
 	/**
-	 * ²âÊÔDepartmentMapper
+	 * æµ‹è¯•DepartmentMapper
 	 */
 	@Test
 	public void testCRUD() {
 		System.out.println(departmentMapper);
 		
-		//1¡¢²åÈë¼¸¸ö²¿ÃÅ
-//		departmentMapper.insertSelective(new Department(null, "¿ª·¢²¿"));
-//		departmentMapper.insertSelective(new Department(null, "²âÊÔ²¿"));
+		//1ã€æ’å…¥å‡ ä¸ªéƒ¨é—¨
+//		departmentMapper.insertSelective(new Department(null, "å¼€å‘éƒ¨"));
+//		departmentMapper.insertSelective(new Department(null, "æµ‹è¯•éƒ¨"));
 		
-		//2¡¢Éú³ÉÔ±¹¤Êı¾İ,²âÊÔÔ±¹¤²åÈë
+		//2ã€ç”Ÿæˆå‘˜å·¥æ•°æ®,æµ‹è¯•å‘˜å·¥æ’å…¥
 //		employeeMapper.insertSelective(new Employee(null, "M", "Jerry@xw.com", "Jerry", 1));
 		
-		//3¡¢ÅúÁ¿²åÈë¶à¸öÔ±¹¤,ÅúÁ¿£ºÊ¹ÓÃ¿ÉÒÔÖ´ĞĞÅúÁ¿²Ù×÷µÄsqlSession
+		//3ã€æ‰¹é‡æ’å…¥å¤šä¸ªå‘˜å·¥,æ‰¹é‡ï¼šä½¿ç”¨å¯ä»¥æ‰§è¡Œæ‰¹é‡æ“ä½œçš„sqlSession
 		/*for(){
 			employeeMapper.insertSelective(new Employee(null, "M", "Jerry@xw.com", "Jerry", 1));
 		}*/
@@ -59,7 +59,7 @@ public class MapperTest {
 			String uid = UUID.randomUUID().toString().substring(0, 5) + i;
 			mapper.insertSelective(new Employee(null, "M", uid + "@xw.com", uid, 1));
 		}
-		System.out.println("ÅúÁ¿Íê³É");
+		System.out.println("æ‰¹é‡å®Œæˆ");
 	}
 
 }
