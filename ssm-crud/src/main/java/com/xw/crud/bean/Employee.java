@@ -9,18 +9,18 @@ public class Employee {
 
     private String gender;
 
-    @Email
-//    @Pattern(regexp="^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$", 
-//    		 message="ÓÊÏä¸ñÊ½²»ÕıÈ·£¡")
+//    @Email
+    @Pattern(regexp="^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$", 
+    		 message="é‚®ç®±æ ¼å¼ä¸æ­£ç¡®ï¼")
     private String email;
 
     @Pattern(regexp="(^[a-zA-Z0-9_-]{6,16}$)|(^[\u2E80-\u9FFF]{2,5})", 
-    		 message="ÓÃ»§Ãû±ØĞëÊÇ2-5Î»ÖĞÎÄ»òÕß6-16Î»Ó¢ÎÄºÍÊı×ÖµÄ×éºÏ")
+    		 message="ç”¨æˆ·åå¿…é¡»æ˜¯2-5ä½ä¸­æ–‡æˆ–è€…6-16ä½è‹±æ–‡å’Œæ•°å­—çš„ç»„åˆ")
     private String empName;
 
     private Integer dId;
     
-  //²éÑ¯Ô±¹¤µÄÍ¬Ê±£¬²éÑ¯²¿ÃÅĞÅÏ¢
+  //æŸ¥è¯¢å‘˜å·¥çš„åŒæ—¶ï¼ŒæŸ¥è¯¢éƒ¨é—¨ä¿¡æ¯
     private Department department;
 
     public Employee(Integer empId, String gender, String email, String empName,
